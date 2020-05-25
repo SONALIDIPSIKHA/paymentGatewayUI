@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Payment Gateway</title>
+  </head>
+  <body>
+    <div class="container clearfix">
+      <form id="form" class="form">
+        <h2>Add your Card details</h2>
+        <div class="form-control">
+          <label for="card">* Card Number </label>
+          <input type="text" onkeypress="validate(event)" oninput="cardValidation(event);buttonStatus()" id="card" placeholder="Enter Card Number" />
+          <img id="cardTypeImage" class="display-none">
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="cvv">CVV</label>
+          <input disabled type="password" id="cvv" onkeypress="validate(event)"
+            oninput="cvvValidation(event);buttonStatus()" placeholder="Enter cvv" />
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="date">Date</label>
+          <input disabled type="text" id="date" pattern="^[0-9/]*$"
+            onmouseout="checkExp(event);buttonStatus()" placeholder="Enter Date m/y" />
+          <small>Error message</small>
+        </div>
+        <button type="submit" id="addCard" class="button-disabled">Add Card</button>
+      </form>
+      <!-- list of cards -->
+      <div class="list-card-wrapper">
+        <h2>Saved cards</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Card Number</th>
+                <th>CVV</th>
+                <th>Date</th>
+                <th>Action</th>
+
+              </tr>
+            </thead>
+            <tbody id="saved-cards-table">
+
+            </tbody>
+          </table>
+        </div>
+        <div id="no-card" class="display-none">No saved card</div>
+      </div>
+      <!-- list of cards ends here -->
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
